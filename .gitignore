@@ -1,0 +1,30 @@
+# dependencies
+node_modules/
+frontend/node_modules/
+backend/venv/
+
+# build outputs
+dist/
+frontend/dist/
+build/
+
+# Python cache
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# environment files
+.env
+.env.local
+.venv/
+venv/
+
+# OS/editor files
+.DS_Store
+.idea/
+.vscode/
+
+# generated reports / temporary files
+*.log
+/tmp/
+*.pdf
