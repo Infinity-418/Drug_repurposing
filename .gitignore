@@ -28,3 +28,6 @@ venv/
 *.log
 /tmp/
 *.pdf
+
+# local project PDFs / drafts
+/*.pdf

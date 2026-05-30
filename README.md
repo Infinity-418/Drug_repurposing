@@ -1,71 +1,127 @@
-# Nebula: AI-Guided Drug Repurposing Dashboard
+# Nebula
 
-A student-built full-stack dashboard for exploring **drug repurposing candidates** with a small biomedical knowledge graph, confidence scoring, explainable AI views, and PDF report generation.
+### AI-guided drug repurposing dashboard with knowledge graphs and explainable scoring
 
-> This project is for academic / research demonstration only. It is **not** intended for clinical decision-making or medical advice.
+![React](https://img.shields.io/badge/Frontend-React-61DAFB?style=for-the-badge&logo=react&logoColor=111827)
+![FastAPI](https://img.shields.io/badge/Backend-FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+
+Nebula is a student-built full-stack prototype for exploring **drug repurposing candidates**. It combines a small biomedical knowledge graph, model-based confidence scoring, explainable AI style breakdowns, citation evidence, and an interactive React dashboard.
+
+> **Academic disclaimer:** This project is for research and learning demonstration only. It is not medical advice and should not be used for clinical decision-making.
 
 ![Nebula dashboard](docs/screenshots/nebula-current-dashboard.png)
 
-## Why I Built This
+## What It Does
 
-Drug repurposing is the idea of finding new possible uses for existing medicines. I built Nebula as a small project to understand how knowledge graphs, model scores, and explainability panels can be combined into a practical biomedical dashboard.
+Nebula lets a user choose a disease and inspect possible drug repurposing candidates. The dashboard separates predicted candidates from known approved treatments, then gives supporting evidence through graph relationships, confidence score breakdowns, drug comparison, and PDF reporting.
 
-The goal was not to make a hospital-ready product. The goal was to make a clear prototype that shows:
+The project was built to answer a simple learning question:
 
-- how candidate drugs can be ranked for a selected disease
-- how known treatments can be separated from repurposing predictions
-- how graph distance and evidence signals can support interpretation
-- how SHAP-style explanations and citations can make model output easier to inspect
+> Can a small knowledge graph plus explainable scoring make drug repurposing predictions easier to inspect?
 
-## Main Features
+## Core Features
 
-- Disease selector for running candidate prediction
-- Predicted repurposing candidate list with confidence scores
-- Separate collapsed section for known / approved treatments
-- Knowledge graph explorer with disease, drug, gene, and pathway nodes
-- Explainable AI panel with confidence breakdown and biological rationale
-- Drug comparison module for side-by-side candidate review
-- PubMed-style citation panel
-- Downloadable research PDF report
-- Responsive UI for desktop and mobile demos
+- **Candidate ranking** for selected diseases
+- **Known treatment separation** so approved drugs do not look like new discoveries
+- **Knowledge graph view** connecting diseases, drugs, genes, and pathways
+- **Shortest KG path explanation** for network-distance based reasoning
+- **Confidence score breakdown** using network, pathway, target, and literature signals
+- **SHAP-style explainability panel** with biological rationale
+- **Drug comparison module** for side-by-side candidate review
+- **PubMed-style evidence cards** for supporting references
+- **PDF report download** for a selected disease
+- **Responsive dashboard UI** for presentation demos
 
 ## Tech Stack
 
-**Frontend**
+| Layer | Tools |
+| --- | --- |
+| Frontend | React, TypeScript, Vite, Tailwind CSS |
+| Visualization | Cytoscape.js, Recharts, Lucide Icons |
+| Backend | FastAPI, Python |
+| Graph / Model Logic | NetworkX, scikit-learn / XGBoost-style scoring |
+| Explainability / Reports | SHAP-style logic, ReportLab |
 
-- React
-- TypeScript
-- Vite
-- Tailwind CSS
-- Cytoscape.js
-- Recharts
-- Lucide icons
-
-**Backend**
-
-- FastAPI
-- NetworkX
-- scikit-learn / XGBoost style model layer
-- SHAP-style explainability layer
-- ReportLab for PDF reports
-
-## Project Structure
+## Repository Structure
 
 ```text
-Nebulla project 3/
-├── backend/              # FastAPI backend and model/graph logic
-├── frontend/             # React + Vite frontend
-├── docs/                 # Screenshots and presentation notes
-├── run.sh                # Starts backend and frontend together
+Drug_repurposing/
+├── backend/
+│   ├── app.py                # FastAPI routes
+│   ├── knowledge_graph.py    # biomedical graph construction and queries
+│   ├── model.py              # candidate scoring logic
+│   ├── explainability.py     # explanation and confidence breakdown
+│   ├── report_generator.py   # PDF report generation
+│   └── requirements.txt
+├── frontend/
+│   ├── src/
+│   │   ├── App.tsx
+│   │   └── components/
+│   ├── package.json
+│   └── vite.config.ts
+├── docs/
+│   ├── ARCHITECTURE.md
+│   ├── DEPLOYMENT.md
+│   └── screenshots/
+├── run.sh
 └── README.md
 ```
 
-## How To Run Locally
+## System Flow
 
-Make sure Python 3 and Node.js are installed.
+```mermaid
+flowchart LR
+    A[React Dashboard] --> B[Vite API Proxy]
+    B --> C[FastAPI Backend]
+    C --> D[Knowledge Graph]
+    C --> E[Repurposing Model]
+    C --> F[Explainability Layer]
+    C --> G[PDF Report Generator]
+    D --> E
+    E --> F
+```
+
+## Running Locally
+
+Make sure you have **Python 3** and **Node.js** installed.
 
 ```bash
+git clone https://github.com/Infinity-418/Drug_repurposing.git
+cd Drug_repurposing
 chmod +x run.sh
+./run.sh
+```
+
+Open the frontend:
+
+```text
+http://localhost:5173
+```
+
+Backend API:
+
+```text
+http://localhost:8000
+```
+
+## API Endpoints
+
+| Endpoint | Purpose |
+| --- | --- |
+| `GET /api/diseases` | List available diseases |
+| `GET /api/predict/{disease_id}` | Return repurposing candidates |
+| `GET /api/explain/{drug_id}/{disease_id}` | Return explanation, citations, and mechanism data |
+| `GET /api/graph/{disease_id}/{drug_id}` | Return graph nodes and edges |
+| `GET /api/compare/{drug_a_id}/{drug_b_id}/{disease_id}` | Compare two drugs |
+| `GET /api/report/{disease_id}` | Download PDF report |
+
+## Demo Notes
+
+For an investigator or viva-style demo, the most reliable method is to run the project locally and screen share:
+
+```bash
 ./run.sh
 ```
 
@@ -75,39 +131,24 @@ Then open:
 http://localhost:5173
 ```
 
-The backend runs on:
+More sharing options are documented in [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md).
 
-```text
-http://localhost:8000
-```
-
-## Useful API Endpoints
-
-```text
-GET /api/diseases
-GET /api/predict/{disease_id}
-GET /api/explain/{drug_id}/{disease_id}
-GET /api/graph/{disease_id}/{drug_id}
-GET /api/compare/{drug_a_id}/{drug_b_id}/{disease_id}
-GET /api/report/{disease_id}
-```
-
-## Current Limitations
+## Limitations
 
 - The biomedical graph is small and curated for demonstration.
 - Confidence scores are prototype scores, not clinically validated probabilities.
-- Literature evidence is presented for exploration, not as a complete systematic review.
-- The app currently runs best as a local full-stack demo.
+- Literature evidence is shown for exploration, not as a complete systematic review.
+- The current deployment flow is best suited for local demos.
 
 ## Future Improvements
 
-- Add stronger evidence grading for citations
-- Add filters for confidence tier, evidence count, and shortest graph path
+- Add larger biomedical datasets
+- Improve evidence grading for clinical / review / preclinical sources
+- Add filters for confidence tier, evidence count, and shortest KG path
 - Improve graph label readability on mobile
-- Add authentication if deployed publicly
-- Connect to larger biomedical datasets
-- Add exportable comparison reports
+- Add a hosted backend and stable public demo link
+- Add user authentication if deployed publicly
 
-## Academic Note
+## About This Project
 
-This project should be understood as a student prototype for learning and demonstration. It combines software engineering, data visualization, graph-based reasoning, and explainable AI ideas in one small application.
+This was made as a student prototype to practice full-stack development, biomedical graph modeling, and explainable AI presentation. The focus is on making model output understandable rather than claiming clinical accuracy.
