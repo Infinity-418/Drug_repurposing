@@ -1,4 +1,4 @@
-# Nebula 🪐
+# DrugDiscoveryX
 
 ### AI-Guided Drug Repurposing Dashboard with Knowledge Graphs and Explainable Scoring
 
@@ -8,11 +8,11 @@
 [![React](https://img.shields.io/badge/Frontend-React-61DAFB?style=flat&logo=react&logoColor=111827)](#tech-stack)
 [![FastAPI](https://img.shields.io/badge/Backend-FastAPI-009688?style=flat&logo=fastapi&logoColor=white)](#tech-stack)
 
-Nebula is a student-built full-stack prototype for exploring **drug repurposing candidates**. It combines a small biomedical knowledge graph, model-based confidence scoring, explainable AI-style breakdowns, citation evidence, and an interactive React dashboard.
+DrugDiscoveryX is a  full-stack prototype for exploring **drug repurposing candidates**. It combines a small biomedical knowledge graph, model-based confidence scoring, explainable AI-style breakdowns, citation evidence, and an interactive React dashboard.
 
 > ⚠️ **Academic disclaimer:** This project is for research and learning demonstration only. It is not medical advice and should not be used for clinical decision-making.
 
-![Nebula dashboard](docs/screenshots/nebula-current-dashboard.png)
+![DrugDiscoveryX](docs/screenshots/nebula-current-dashboard.png)
 
 ---
 
@@ -36,7 +36,7 @@ Nebula is a student-built full-stack prototype for exploring **drug repurposing 
 
 ## What It Does
 
-Nebula lets an investigator choose a disease and inspect potential drug repurposing candidates. The dashboard separates predicted candidates from known approved treatments, then gives supporting evidence through:
+DrugDiscoveryX lets a user choose a disease and inspect potential drug repurposing candidates. The dashboard separates predicted candidates from known approved treatments, then gives supporting evidence through:
 1. **Graph relationships** mapping drug-target-disease nodes.
 2. **Confidence score breakdowns** based on multi-source biological signals.
 3. **SHAP-style explainability panels** detailing biological feature rationale.
@@ -188,14 +188,7 @@ npm run dev
 
 ---
 
-## Demonstration & Sharing Guide
 
-If you are demonstrating this project during a viva, review, or presentation:
-- **Laptop Zoom/Meet presentation:** Use **Method 1** or **Method 2** and share your screen.
-- **Wi-Fi Sharing:** You can host the servers locally on your machine and let investigators access it from their mobile/tablet screens under the same local Wi-Fi. Check instructions in [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md).
-- **Public URL Sharing:** Instructions on setting up temporary tunnels (like ngrok) or proper online deployment are detailed in [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md).
-
----
 
 ## Limitations & Future Improvements
 
