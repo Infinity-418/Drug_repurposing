@@ -1,4 +1,4 @@
-# DrugDiscoveryX
+<img width="1466" height="833" alt="Screenshot 2026-06-02 at 9 07 20 AM" src="https://github.com/user-attachments/assets/e5bdc343-4d73-46ae-bd80-80ceca57ac38" /># DrugDiscoveryX
 
 ### AI-Guided Drug Repurposing Dashboard with Knowledge Graphs and Explainable Scoring
 
@@ -8,11 +8,11 @@
 [![React](https://img.shields.io/badge/Frontend-React-61DAFB?style=flat&logo=react&logoColor=111827)](#tech-stack)
 [![FastAPI](https://img.shields.io/badge/Backend-FastAPI-009688?style=flat&logo=fastapi&logoColor=white)](#tech-stack)
 
-DrugDiscoveryX is a  full-stack prototype for exploring **drug repurposing candidates**. It combines a small biomedical knowledge graph, model-based confidence scoring, explainable AI-style breakdowns, citation evidence, and an interactive React dashboard.
+DrugdiscoveryX is a  full-stack prototype for exploring **drug repurposing candidates**. It combines a small biomedical knowledge graph, model-based confidence scoring, explainable AI-style breakdowns, citation evidence, and an interactive React dashboard.
 
 > ⚠️ **Academic disclaimer:** This project is for research and learning demonstration only. It is not medical advice and should not be used for clinical decision-making.
 
-![DrugDiscoveryX](docs/screenshots/nebula-current-dashboard.png)
+
 
 ---
 
